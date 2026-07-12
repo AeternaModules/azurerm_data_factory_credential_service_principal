@@ -1,3 +1,7 @@
+output "data_factory_credential_service_principals_id" {
+  description = "Map of id values across all data_factory_credential_service_principals, keyed the same as var.data_factory_credential_service_principals"
+  value       = { for k, v in azurerm_data_factory_credential_service_principal.data_factory_credential_service_principals : k => v.id }
+}
 output "data_factory_credential_service_principals_annotations" {
   description = "Map of annotations values across all data_factory_credential_service_principals, keyed the same as var.data_factory_credential_service_principals"
   value       = { for k, v in azurerm_data_factory_credential_service_principal.data_factory_credential_service_principals : k => v.annotations }
