@@ -24,7 +24,7 @@ output "data_factory_credential_service_principals_service_principal_id" {
 }
 output "data_factory_credential_service_principals_service_principal_key" {
   description = "Map of service_principal_key values across all data_factory_credential_service_principals, keyed the same as var.data_factory_credential_service_principals"
-  value       = { for k, v in azurerm_data_factory_credential_service_principal.data_factory_credential_service_principals : k => v.service_principal_key if v.service_principal_key != null && length(v.service_principal_key) > 0 }
+  value       = { for k, v in azurerm_data_factory_credential_service_principal.data_factory_credential_service_principals : k => one(v.service_principal_key) if v.service_principal_key != null && length(v.service_principal_key) > 0 }
 }
 output "data_factory_credential_service_principals_tenant_id" {
   description = "Map of tenant_id values across all data_factory_credential_service_principals, keyed the same as var.data_factory_credential_service_principals"
